@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ollama Chat</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <h1>Ollama Chat</h1>
+        <p>Une IA qui tourne sur votre machine</p>
+      </div>
+
+      <button id="new-chat-btn" type="button">
+        + Nouvelle conversation
+      </button>
+
+      <div class="field">
+        <label for="model-select">Modèle</label>
+        <select id="model-select">
+          <option value="">Chargement des modèles...</option>
+        </select>
+      </div>
+
+      <label id="think-container" class="switch" hidden>
+        <input type="checkbox" id="think-toggle">
+        <span class="switch-track" aria-hidden="true"></span>
+        <span>Activer le raisonnement</span>
+      </label>
+
+      <details class="advanced-settings">
+        <summary>Réglages avancés</summary>
+
+        <div class="field">
+          <label for="system-prompt">Instructions système</label>
+          <textarea
+            id="system-prompt"
+            rows="4"
+            placeholder="Exemple : Tu es un professeur d'informatique."
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label for="temperature">
+            Température
+            <span id="temperature-value" class="value-chip">0.7</span>
+          </label>
+          <input
+            type="range"
+            id="temperature"
+            min="0"
+            max="2"
+            step="0.1"
+            value="0.7"
+          >
+        </div>
+      </details>
+
+    </aside>
+
+    <main class="chat">
+
+      <section id="chat-messages" class="chat-messages"
+               aria-label="Messages de la conversation"
+               aria-live="polite">
+
+        <p class="welcome-message">
+          Posez votre première question pour commencer.
+        </p>
+
+      </section>
+
+      <p id="status-message" role="status"></p>
+
+      <form id="chat-form" class="chat-form">
+
+        <div class="composer">
+          <textarea
+            id="message-input"
+            placeholder="Écrivez votre message..."
+            rows="2"
+            required
+          ></textarea>
+
+          <div class="chat-actions">
+            <button id="stop-btn" type="button" disabled>Arrêter</button>
+            <button id="send-btn" type="submit">Envoyer</button>
+          </div>
+        </div>
+
+      </form>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
